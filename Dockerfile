@@ -17,7 +17,6 @@ RUN adduser -D minecraft && \
     curl -SLO ${BASE_URL}/${FTB_VERSION}/${SERVER_FILE}  && \
     unzip ${SERVER_FILE} && \
     chmod u+x FTBInstall.sh ServerStart.sh CheckEula.sh && \
-    rm eula.txt && \
     sed -i '2i /bin/sh /minecraft/CheckEula.sh' /minecraft/ServerStart.sh && \
     chown -R minecraft:minecraft /minecraft
 
