@@ -3,7 +3,7 @@ FROM openjdk:alpine
 MAINTAINER Sean Nelson <audiohacked@gmail.com>
 
 ENV BASE_URL="http://ftb.cursecdn.com/FTB2/modpacks/FTBPresentsDirewolf20110"
-ENV FTB_VERSION="1_12_0"
+ENV FTB_VERSION="1_12_1"
 ENV SERVER_FILE="FTBPresentsDirewolf20110Server.zip"
 ENV SERVER_PORT 25565
 
