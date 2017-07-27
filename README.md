@@ -4,17 +4,17 @@ To pull the image:
 docker pull audiohacked/direwolf20_110:stable
 ```
 
-It's highly recommended run a data container:
+It's highly recommended run a named data volume:
 ```
-docker run --name direwolf20_datastore audiohacked/direwolf20_110:stable true
+docker volume create minecraft_direwolf20_data
 ```
 
 Then, run the server container:
 ```
 docker run --detach --interactive --tty \
     --name direwolf20 \
-    --volumes-from direwolf20_datastore \
-    -p 25565:25565 \
-    -e EULA=TRUE \
+    --volume minecraft_direwolf20_data:/minecraft/world \
+    --publish 25565:25565 \
+    --env EULA=TRUE \
     audiohacked/direwolf20_110:stable
 ```
