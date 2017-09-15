@@ -1,28 +1,28 @@
-# Copyright 2015 Sean Nelson <audiohacked@gmail.com>
+# Copyright 2015-2017 Sean Nelson <audiohacked@gmail.com>
 FROM openjdk:alpine
 MAINTAINER Sean Nelson <audiohacked@gmail.com>
 
-ENV BASE_URL="http://ftb.cursecdn.com/FTB2/modpacks/FTBPresentsDirewolf20110"
-ENV FTB_VERSION="1_12_1"
-ENV SERVER_FILE="FTBPresentsDirewolf20110Server.zip"
-ENV SERVER_PORT 25565
+ENV BASE_URL="http://ftb.cursecdn.com/FTB2/modpacks/FTBPresentsDirewolf20110" \
+	FTB_VERSION="1_13_0" \
+	SERVER_FILE="FTBPresentsDirewolf20110Server.zip" \
+	SERVER_PORT=25565
 
 WORKDIR /minecraft
 
 USER root
 COPY CheckEula.sh /minecraft/
 RUN adduser -D minecraft && \
-    mkdir -p /minecraft/world && \
-    apk --no-cache add curl wget && \
-    curl -SLO ${BASE_URL}/${FTB_VERSION}/${SERVER_FILE}  && \
-    unzip ${SERVER_FILE} && \
-    chmod u+x FTBInstall.sh ServerStart.sh CheckEula.sh && \
-    sed -i '2i /bin/sh /minecraft/CheckEula.sh' /minecraft/ServerStart.sh && \
-    chown -R minecraft:minecraft /minecraft
+	apk --no-cache add curl wget && \
+	chown -R minecraft:minecraft /minecraft
 
 USER minecraft
-RUN /minecraft/FTBInstall.sh
-EXPOSE ${SERVER_PORT}
-VOLUME ["/minecraft/world"]
+RUN mkdir -p /minecraft/world && \
+	curl -SLO ${BASE_URL}/${FTB_VERSION}/${SERVER_FILE}  && \
+	unzip ${SERVER_FILE} && \
+	chmod u+x FTBInstall.sh ServerStart.sh CheckEula.sh && \
+	sed -i '2i /bin/sh /minecraft/CheckEula.sh' /minecraft/ServerStart.sh && \
+	/minecraft/FTBInstall.sh
 
+EXPOSE ${SERVER_PORT}
+VOLUME ["/minecraft/world", "/minecraft/backup"]
 CMD ["/bin/sh", "/minecraft/ServerStart.sh"]
