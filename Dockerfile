@@ -1,10 +1,10 @@
 # Copyright 2015-2017 Sean Nelson <audiohacked@gmail.com>
 FROM openjdk:8-jre-alpine
-MAINTAINER Sean Nelson <audiohacked@gmail.com>
+MAINTAINER William Lees <willwill56@gmail.com>
 
-ENV BASE_URL="http://ftb.cursecdn.com/FTB2/modpacks/FTBPresentsDirewolf20110" \
-    FTB_VERSION="1_13_0" \
-    SERVER_FILE="FTBPresentsDirewolf20110Server.zip" \
+ENV BASE_URL="http://ftb.cursecdn.com/FTB2/modpacks/FTBPresentsDirewolf20112" \
+    FTB_VERSION="1_1_0" \
+    SERVER_FILE="FTBPresentsDirewolf20112Server.zip" \
     SERVER_PORT=25565
 
 WORKDIR /minecraft
@@ -25,4 +25,4 @@ RUN mkdir -p /minecraft/world && \
 
 EXPOSE ${SERVER_PORT}
 VOLUME ["/minecraft/world", "/minecraft/backups"]
-CMD ["/bin/sh", "/minecraft/ServerStart.sh"]
+CMD ["/bin/bash", "/minecraft/ServerStart.sh"]
