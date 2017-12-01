@@ -25,4 +25,4 @@ RUN mkdir -p /minecraft/world && \
 
 EXPOSE ${SERVER_PORT}
 VOLUME ["/minecraft/world", "/minecraft/backups"]
-CMD ["/bin/bash", "/minecraft/ServerStart.sh"]
+CMD ["/bin/sh", "/minecraft/ServerStart.sh"]
