@@ -3,7 +3,7 @@ FROM openjdk:8-jre-alpine
 MAINTAINER William Lees <willwill56@gmail.com>
 
 ENV BASE_URL="http://ftb.cursecdn.com/FTB2/modpacks/FTBPresentsDirewolf20112" \
-    FTB_VERSION="1_2_0" \
+    FTB_VERSION="1_3_0" \
     SERVER_FILE="FTBPresentsDirewolf20112Server.zip" \
     SERVER_PORT=25565
 
