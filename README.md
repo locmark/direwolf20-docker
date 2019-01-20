@@ -22,7 +22,7 @@ To create and run the container:
 docker run --detach --interactive --tty \
     --name direwolf20_112 \
     --volume /path/on/host/minecraft/world:/minecraft/world \
-	--volume /path/on/host/minecraft/backups:/minecraft/backups \
+    --volume /path/on/host/minecraft/backups:/minecraft/backups \
     --publish 25565:25565 \
     --env EULA=TRUE \
     willwill56/direwolf20_112:latest
@@ -31,7 +31,7 @@ docker run --detach --interactive --tty \
 or if you're using named volumes, substitute the volume lines for these:
 ```
     --volume minecraft_direwolf20112_world:/minecraft/world \
-	--volume minecraft_direwolf20112_backups:/minecraft/backups \
+    --volume minecraft_direwolf20112_backups:/minecraft/backups \
 ```
 
 ## Using the server console
